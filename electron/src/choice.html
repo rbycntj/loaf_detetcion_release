@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Choice</title>
+    <link rel="stylesheet" href="css/choice.css"/>
+    <link rel="stylesheet" href="../element-ui/lib/theme-chalk/index.css">
+    <script src="./js/vue.js"></script>
+    <script src="../element-ui/lib/index.js"></script>
+    <script src="./js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- <div>
+      <el-radio-group v-model="radio1">
+        <el-radio-button label="正计时"></el-radio-button>
+        <el-radio-button label="倒计时"></el-radio-button>
+        <el-radio-button label="指定截止"></el-radio-button>
+      </el-radio-group>
+    </div>
+  <div id="choose">
+      <div class="choice_block">
+          <h3 style="text-align: center">正计时</h3>
+      </div>
+      <div class="choice_block">
+          <h3 style="text-align: center">倒计时</h3>
+          <el-input-number style="position: relative; left: 25%; width: 50%"
+                  v-model="value2"
+                  @change="handleChange"
+                  :min="1" :max="60"
+                  label="描述文字">
+          </el-input-number>
+          <h3 style="text-align: center">分钟</h3>
+      </div>
+      <div class="choice_block">
+          <h3 style="text-align: center">指定结束</h3>
+          <el-time-picker style="position: relative; left: 25%; width: 50%"
+                  v-model="value3"
+                  placeholder="结束时间"
+                  editable: false>
+          </el-time-picker>
+      </div>
+  </div>
+  <el-button id="record_button" @click="start_record()">
+      GO!
+  </el-button> -->
+
+
+    <el-tabs v-model="radio1" type="card">
+        <el-tab-pane label="正计时" name="正计时">
+            <div class="choice_block">
+                <h3 style="text-align: center">正计时</h3>
+            </div>
+            <div class="btn">
+                <el-button id="record_button" @click="start_record()">
+                    GO!
+                </el-button>
+            </div>
+        </el-tab-pane>
+        <el-tab-pane label="倒计时" name="倒计时">
+            <div class="choice_block">
+                <div>
+                    <h3 style="text-align: center">倒计时</h3>
+                    <el-input-number style="position: relative; left: 25%; width: 50%" v-model="value2"
+                                     @change="handleChange" :min="1"
+                                     :max="60" label="描述文字">
+                    </el-input-number>
+                    <h3 style="text-align: center">分钟</h3>
+                </div>
+            </div>
+            <div class="btn">
+                <el-button id="record_button" @click="start_record()">
+                    GO!
+                </el-button>
+            </div>
+        </el-tab-pane>
+        <el-tab-pane label="指定截止" name="指定截止">
+            <div class="choice_block">
+                <div>
+                    <h3 style="text-align: center">指定结束</h3>
+                    <el-time-picker style="position: relative; left: 25%; width: 50%" v-model="value3"
+                                    placeholder="结束时间" editable: false>
+                    </el-time-picker>
+                </div>
+            </div>
+            <div class="btn">
+                <el-button id="record_button" @click="start_record()">
+                    GO!
+                </el-button>
+            </div>
+        </el-tab-pane>
+    </el-tabs>
+</div>
+</body>
+<script src="js/choice.js"></script>
+</html>

@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    height:calc(100vh);
+    width: calc(100vw);
+    position: absolute;
+    user-select: none;
+    -webkit-app-region: drag;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#choose {
+    position: relative;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.choice_block{
+    margin: 10vh 2px;
+    border-radius: 4px;
+    height:30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #a6c299;
+    color: #375941;
+}
+
+#record_button {
+    /* position: relative;
+    height: 20%; */
+    margin: 5vh auto;
+    background-color: #5B8867;
+    width: 35vh;
+    height: 25vh;
+    border-radius: 50%;
+    font-size: 10vh;
+}
+.btn{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}

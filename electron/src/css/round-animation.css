@@ -1,0 +1,35 @@
+.round {
+    border-radius: 50%;
+    background-color: #ffffff;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    opacity: 0;
+    animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+}
+.round-wrapper {
+    width: 150px;
+    height: 150px;
+}
+@keyframes scaleIn {
+    from {
+        transform: scale(.5, .5);
+        opacity: .5;
+    }
+    to {
+        transform: scale(2.5, 2.5);
+        opacity: 0;
+    }
+}
+.round-delay-1 {
+    animation-delay: -3s;
+}
+.round-delay-2 {
+    animation-delay: -2s;
+}
+.round-delay-3 {
+    animation-delay: -1s;
+}
+.round-delay-4 {
+    animation-delay: 0s;
+}

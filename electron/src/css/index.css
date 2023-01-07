@@ -1,0 +1,284 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    height:calc(100vh);
+    width: calc(100vw);
+    user-select: none;
+    -webkit-app-region: drag;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.left-region {
+    position: relative;
+    height: 100%;
+    width: 60%;
+    display: inline-flex;
+    flex-direction: column;
+    background-color: #2bb977;
+    transition: all .5s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+}
+
+.right-region {
+    margin: auto 2px auto auto;
+    height: 100%;
+    width: 40%;
+    background-color: #8ff1aa;
+    display: inline-block;
+    transition: all .5s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+}
+
+#avatar{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: #e1f3d8;
+    color: #375941;
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+}
+
+
+.hide {
+    width: 0%;
+    height: 100%;
+    opacity:0;
+    margin:0;
+    padding:0;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+}
+
+.expand {
+    width: 100%;
+    height: 100%;
+    opacity:1;
+    -webkit-backface-visibility: visible;
+    -webkit-transform-style: preserve-3d;
+}
+
+/* -------state A------*/
+
+.state-A-right {
+    width: 30%;
+    visibility: visible;
+}
+
+.animation-state-A-right {
+    animation-name: animation-A-right;
+    animation-duration: 1s;
+}
+
+@keyframes animation-A-right {
+    from {
+        width: 30%;
+        visibility: visible;
+    }
+    to {
+        width: 0%;
+        visibility: hidden;
+    }
+}
+
+.state-A-left {
+    width: 70%;
+}
+
+.animation-state-A-left {
+    animation-name: animation-A-left;
+    animation-duration: 1s;
+}
+
+@keyframes animation-A-left {
+    from {
+        width: 70%;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* -------state B------*/
+
+.state-B-right {
+    width: 0%;
+    visibility: hidden;
+}
+
+.animation-state-B-right {
+    animation-name: animation-B-right;
+    animation-duration: 1s;
+}
+
+@keyframes animation-B-right {
+    from {
+        width: 0%;
+        visibility: hidden;
+    }
+    to {
+        width: 30%;
+        visibility: visible;
+    }
+}
+
+.state-B-left {
+    width: 100%;
+}
+
+.animation-state-B-left {
+    animation-name: animation-B-left;
+    animation-duration: 1s;
+}
+
+@keyframes animation-B-left {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 70%;
+    }
+}
+
+/*--------------------------*/
+
+
+
+.kato{
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+#starts-button{
+    background-color: #2bb977;
+    color: black;
+    height: 10vh;
+    border-radius: 3px;
+    font-size: 4vh;
+}
+#starts-button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: all .3s;
+}
+
+.sinfo{
+    background-color: #dad7d2;
+    border-radius: 5px;
+    color: #375941;
+}
+
+
+#circle_choice{
+    background-color: #a6c299;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+}
+
+.video-region {
+    height: 82%;
+    width: 99.5%;
+    border: rgba(0, 0, 0, 0.8) solid 2px;
+}
+#video{
+    width: 100%;
+    height: 100%;
+}
+#canvas{
+    width: 100%;
+    height: 100%;
+}
+
+.btn-region {
+    padding-top: 5px;
+    position: relative;
+    height: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+
+#stop-button {
+    cursor: pointer;
+    margin: auto 33% auto auto;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background: url("../img/pause.png") center;
+    background-size: contain;
+    z-index: 999;
+    -webkit-app-region: no-drag;
+}
+
+.bottom-time {
+    margin-bottom: 20%;
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+}
+
+.middle-set {
+    margin: auto auto 0;
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#set-time-button {
+    margin: 0 auto auto;
+    background-color: dodgerblue;
+    color: white;
+    width: 80%;
+    height: 30px;
+    border: 0;
+    font-size: 12px;
+    box-sizing: content-box;
+    border-radius: 5px;
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+}
+
+#set-time-button:hover {
+    background-color: #549cc2;
+}
+
+#day {
+    margin: auto auto 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#time {
+    margin: 0px auto 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.middle-time {
+    margin: auto auto 0px;
+    height: 5%;
+    width: 100%;
+    text-align: center;
+}

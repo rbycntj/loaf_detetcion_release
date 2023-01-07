@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>GET VIDEO</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="./css/fonts.css"/>
+    <link rel="stylesheet" href="./css/jquery.countdown.css"/>
+    <script src="./js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<!-- 左侧工具栏区域 -->
+<div class="left-region">
+    <div class="middle-set">
+        <button id="set-time-button" onclick="set_time()">设置学习时长</button>
+    </div>
+    <hr/>
+    <div class="bottom-time">
+        <span id="day"></span>
+        <span id="time"></span>
+    </div>
+    <!-- <button id="open" onclick="">开启摄像头</button> -->
+    <!-- <button id="snap" onclick="">拍照</button> -->
+    <!-- <button id="close" onclick="">关闭摄像头</button> -->
+    <!-- <button id="upload" onclick="">上传</button> -->
+</div>
+<!-- 右侧学习区位置 -->
+<div class="right-region">
+    <div class="middle-time">
+        <div id="countdown"></div>
+    </div>
+    <div class="video-region">
+        <video id="video" autoplay="autoplay"></video>
+        <!--图层-->
+        <canvas id="canvas" style="visibility: hidden"></canvas>
+    </div>
+    <div class="btn-region">
+        <button id="start-button" onclick="start_video()"></button>
+        <button id="stop-button" onclick="stop_video()"></button>
+    </div>
+</div>
+</body>
+<script src="js/detecting.js"></script>
+<script src="./js/jquery.countdown.js"></script>
+</html>

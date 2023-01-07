@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="./css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link href="css/round-animation.css" rel="stylesheet" crossorigin="anonymous">
+  <link rel="stylesheet" href="../node_modules/element-ui/lib/theme-chalk/index.css">
+  <meta charset="UTF-8">
+  <script src="./js/axios.js"></script>
+  <script src="js/vue.js"></script>
+  <script src="../node_modules/element-ui/lib/index.js"></script>
+  <script src="../node_modules/element-ui/lib/element-ui.common.js"></script>
+  <title>正在专注</title>
+</head>
+<body class="bg-success">
+  <div id="content-recording">
+    <video id="video" autoplay></video>
+    <canvas id="helper-canvas"></canvas>
+    <div class="container min-vh-100 align-items-center d-flex">
+      <div class="w-100">
+        <div>
+          <div class="d-flex justify-content-center">
+            <div class="round-wrapper">
+              <div class="round round-delay-1"></div>
+              <div class="round round-delay-2"></div>
+              <div class="round round-delay-3"></div>
+              <div class="round round-delay-4"></div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center mt-3">
+          <span id="status-text-connected" class="badge mt-5 text-bg-light">
+            已连接服务器
+          </span>
+            <span id="status-text-disconnected" class="badge mt-5 text-bg-danger">
+            与服务器失去连接
+          </span>
+          </div>
+          <h3 id="timer-text" class="text-center mt-3 text-light">
+            00:00:00
+          </h3>
+          <div class="d-flex justify-content-center mt-3">
+            <button type="button" class="btn btn-success btn-sm" id="quit-button">退出专注模式</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="content-results" class="container">
+    <h3 class="text-center text-light m-5" id="message"><strong>专注结束</strong></h3>
+    <h6 class="text-center text-light m-5" id="nothing-text"><strong>由于收集到的信息过少，本次专注没有结果。</strong></h6>
+    <div id="results-chart">
+      <p class="text-light"><span style="color: #FA5858;">离开</span>：    得分：<span id="invalidScore">0</span></p>
+      <div class="progress" id="chart-1"></div>
+      <p class="text-light"><span style="color: orange;">注意力分散</span>或<span style="color: #FA5858;">低头</span>：   得分：<span id="headScore">0</span></p>
+      <div class="progress" id="chart-2"></div>
+      <p class="text-light"><span style="color: #FA5858;">闭眼</span>：    得分：<span id="eyeScore">0</span></p>
+      <div class="progress" id="chart-3"></div>
+      <p class="text-light"><span style="color: orange;">说话</span>或<span style="color: #FA5858;">打哈欠</span>：   得分：<span id="mouthScore">0</span></p>
+      <div class="progress" id="chart-4"></div>
+      <p class="text-light">距离屏幕<span style="color: orange;">过近</span>或<span style="color: #FA5858;">过远</span>：   得分：<span id="faceScore">0</span></p>
+      <div class="progress" id="chart-5"></div>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+      <button type="button" class="btn btn-success" id="homepage-button">返回首页</button>
+    </div>
+  </div>
+</body>
+<script src="js/recording.js"></script>
+</html>

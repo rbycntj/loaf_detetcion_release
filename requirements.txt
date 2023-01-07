@@ -1,0 +1,8 @@
+dbutils==3.0.2
+Flask==2.2.2
+flask_cors==3.0.10
+opencv_python==4.6.0.66
+pymysql==1.0.2
+redis==4.4.0
+tencentcloud-sdk-python
+cryptography

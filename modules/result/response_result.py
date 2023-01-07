@@ -1,0 +1,63 @@
+import json
+
+
+class ResponseResult(json.JSONEncoder):
+    def __init__(self, flag: bool = None, msg: str = None, obj: object = None):
+        self.flag = flag
+        self.msg = msg
+        self.obj = obj
+
+
+class ResultMessage(object):
+    login_fail = "登陆失败"
+    login_success = "登陆成功"
+    telephone_or_password_wrong = "手机号或密码有误"
+    telephone_or_password_null = "手机号或密码为空"
+    telephone_not_match = "手机号格式有误"
+    telephone_null = "手机号为空"
+    send_message_fail = "验证码发送失败"
+    send_message_success = "验证码发送成功"
+    input_null = "输入不能为空"
+    register_fail = "注册失败"
+    telephone_used = "手机号已经被注册"
+    validate_code_wrong = "验证码错误"
+    validate_code_timeout = "验证码已失效"
+    password_not_equal = "两次密码输入不一致"
+    register_success = "注册成功"
+    query_personal_info_fail = "查询用户信息失败"
+    query_personal_info_success = "查询用户信息成功"
+    user_not_found = "用户不存在"
+    id_null = "用户编号不能为空"
+    update_personal_info_fail = "更新用户信息失败"
+    update_personal_info_success = "更新用户信息成功"
+    query_friend_fail = "查找好友失败"
+    query_friend_success = "查找好友成功"
+    add_friend_fail = "添加好友失败"
+    add_friend_success = "添加好友成功"
+    already_friend = "你们已经是好友，无需再次添加"
+    add_not_yourself = "不能添加自己为好友"
+    friend_not_exist = "好友信息不存在，添加失败"
+    query_all_users_fail = "查询用户信息列表失败"
+    query_all_users_success = "查询用户信息列表成功"
+    add_record_fail = "新增学习记录失败"
+    add_record_success = "新增学习记录成功"
+    update_record_fail = "更新学习记录失败"
+    update_record_success = "更新学习记录成功"
+    get_rank_fail = "获取排名失败"
+    get_rank_success = "获取排名成功"
+    delete_not_yourself = "不能删除自己"
+    delete_friend_fail = "删除好友失败"
+    delete_friend_success = "删除好友成功"
+    friend_pass_success = "好友申请已通过"
+    friend_not_pass_success = "好友申请已拒绝"
+    friend_pass_fail = "好友申请通过失败"
+    friend_not_pass_fail = "拒绝出现错误"
+    send_add_friend_msg_success = "添加好友信息已发送"
+    send_add_friend_msg_fail = "添加好友信息发送失败"
+    query_add_friends_msg_success = "展示添加信息成功"
+    query_add_friends_msg_fail = "展示添加信息失败"
+    already_send_add_friend = "已经发送过申请,对方还未处理"
+    get_study_record_success = "获取学习记录成功"
+    get_study_record_fail = "获取学习记录失败"
+    update_personal_img_fail = "更新头像失败"
+    update_personal_img_success = "更新头像成功"

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>专注系统</title>
+    <link rel="stylesheet" href="../element-ui/lib/theme-chalk/index.css">
+    <script src="js/vue.js"></script>
+    <script src="../element-ui/lib/index.js"></script>
+    <script src="js/axios.js"></script>
+    <style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
+#app {
+    height: 100%;
+    width: 100%;
+    background: url("img/back.png") no-repeat;
+    background-size: cover;
+}
+
+.mid-login {
+    height: 550px;
+    width: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin:auto !important;
+    background-color: rgba(46, 148, 105, 0.9);
+    box-shadow:  0 0  10px #888888;
+}
+.mid-reg{
+    height: 500px;
+    width: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin:auto !important;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow:  0 0  10px #888888;
+}
+.mid-item{
+    width: 70%;
+    height: 80%;
+}
+.item {
+    margin-top: 20px !important;
+}
+.item-font{
+    color: #40485b;
+    font-size: 28px;
+}
+.item a{
+    font-size: 20px;
+    text-decoration: none;
+    color: #67aafa;
+}
+.item a:hover{
+    color: #298afa;
+}
+.btn{
+    width: 100%;
+    font-size: 20px;
+}
+
+
+.wrap {
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #528b61;
+}
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+.container h1 {
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: 500;
+}
+.container .el-input {
+    width: 100%;
+    display: block;
+    height: 36px;
+    border: 0;
+    outline: 0;
+    line-height: 24px;
+    margin: 28px auto;
+    border-radius: 1px;
+    -webkit-transition: all 0s ease-in 0.1ms;
+    -moz-transition: all 0s ease-in 0.1ms;
+    transition: all 0s ease-in 0.1ms;
+}
+.container input[type="text"] , .container input[type="password"]  {
+    background-color: #FFFFFF;
+    font-size: 16px;
+    color: #50a3a2;
+}
+.container input[type='submit'] {
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: #666666;
+    background-color: #FFFFFF;
+}
+
+.container input[type='submit']:hover {
+    cursor: pointer;
+    width: 400px;
+}
+.to_login{
+    color: #a7c4c9;
+}
+.text{
+    color: #e2dfe4;
+}
+
+.getCode{
+    float: right;
+    color: #000000;
+    padding: 0 !important;
+    width: 90px !important;
+    height: 30px !important;
+    margin: 0 auto !important;
+    background-color: #53e3a6 !important;
+}
+
+.electron-main{
+    height: 95%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+}
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="electron-main">
+        <transition name="el-zoom-in-top">
+            <div class="mid-login" v-show="show1">
+                <div class="mid-item">
+                    <h2 class="item item-font">登录</h2>
+                    <el-input class="item" placeholder="请输入手机号" v-model="telephone" clearable maxlength="11">
+                        <template slot="prepend">
+                            <pre><strong>手机号</strong></pre>
+                        </template>
+                    </el-input>
+                    <el-input class="item" placeholder="请输入密码" v-model="password" type="password" show-password>
+                        <template class="slot" slot="prepend">
+                            <pre><strong>密  码</strong></pre>
+                        </template>
+                    </el-input>
+                    <el-row class="item">
+                        没有账号?<a href="javascript:void(0);" @click="ToRegister()"><strong>点此注册</strong></a>
+                    </el-row>
+                    <el-button class="item btn" type="success" @click="login()">登录</el-button>
+                </div>
+            </div>
+        </transition>
+        <transition name="el-zoom-in-bottom">
+            <div class="mid-reg" v-show="show2">
+                <div class="wrap">
+                    <div class="mid-item">
+                        <div class="container">
+                            <h1 style="color: white; margin: 0; text-align: center">注 册</h1>
+                            <el-input v-model="reg_telephone" type="text" placeholder="手机号"></el-input>
+                            <el-row style="height: 10px; margin-top: -15px">
+                                <el-button type="success" class="getCode" @click="getCode">{{ codeStr }}</el-button>
+                            </el-row>
+                            <el-input v-model="validate_code" type="text" placeholder="验证码"></el-input>
+                            <el-input v-model="reg_password" type="password" placeholder="密码"></el-input>
+                            <el-input v-model="reconfirm_reg_password" type="password" placeholder="确认密码"></el-input>
+                        </div>
+                        <el-row class="item">
+                            <span style="color: white">已有账号?</span><a href="javascript:void(0);"
+                                @click="ToLogin"><strong>点此登录</strong></a>
+                        </el-row>
+                        <el-button class="item btn" type="primary" @click="register">注册</el-button>
+                    </div>
+                </div>
+            </div>
+        </transition>
+        </div>
+    </div>
+</body>
+<script src="js/login.js"></script>
+
+</html>

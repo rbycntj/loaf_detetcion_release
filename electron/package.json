@@ -1,0 +1,27 @@
+{
+  "name": "electron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec electron . --watch ./ --ext .js,.html,.css,.vue"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^1.2.2",
+    "electron": "^22.0.0",
+    "nodemon": "^2.0.20",
+    "@electron/remote": "^2.0.9",
+    "electron-request": "^1.8.1",
+    "element-ui": "^2.15.12",
+    "lodash": "^4.17.21"
+  },
+  "dependencies": {
+    "@electron/remote": "^2.0.9",
+    "axios": "^1.2.2",
+    "electron-request": "^1.8.1",
+    "element-ui": "^2.15.12",
+    "lodash": "^4.17.21"
+  }
+}

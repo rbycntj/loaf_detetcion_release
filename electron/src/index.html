@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>START HERE</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="./css/fonts.css"/>
+    <link rel="stylesheet" href="./css/jquery.countdown.css"/>
+    <link rel="stylesheet" href="../element-ui/lib/theme-chalk/index.css">
+    <link href="./css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="css/round-animation.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="js/vue.js"></script>
+    <script src="../element-ui/lib/index.js"></script>
+    <script src="./js/jquery-1.7.1.min.js"></script>
+    <script src="./js/axios.js"></script>
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+<style>
+            .headImg{
+            width: 6vh;
+            height: 6vh;
+            line-height: 10vh;
+            border-radius: 30px;
+        }
+        .info{
+            width: 90%;
+            height: 30vh;
+            margin: 15px auto;
+        }
+        .infospan{
+            font-size:3vh;
+            text-align: center;
+            font-family: '楷体';
+            font-weight: 600;
+            user-select: none;
+        }
+        a{
+            text-decoration: underline;
+            color: black;
+        }
+        .circle_title{
+            text-align: center;
+            color: black;
+            font-size: 3vh;
+        }
+        .friend{
+            width: 96%;
+            height: 100%;
+            margin: 5px auto;
+        }
+        .el-table__body-wrapper::-webkit-scrollbar {
+	        width: 3px;
+        }
+        .username{
+            white-space: nowrap;  /*强制span不换行*/
+            display: inline-block;  /*将span当做块级元素对待*/
+            width: 150px;  /*限制宽度*/
+            overflow: hidden;  /*超出宽度部分隐藏*/
+            text-overflow: ellipsis;  /*超出部分以点号代替*/
+            font-size:4vh;
+        }
+</style>
+</head>
+<body>
+    <div id="app">
+    <!-- 左侧准备区域 -->
+        <div class="left-region">
+            <div class="kato">
+                <!-- <img src="img/play.png" alt="resting"> -->
+                <i class="el-icon-video-play" style="font-size: 40vh;"></i>
+                <el-button id="starts-button" @click="set_mode()">开始专注</el-button>
+            </div>
+            <!-- <button id="open" onclick="">开启摄像头</button> -->
+            <!-- <button id="snap" onclick="">拍照</button> -->
+            <!-- <button id="close" onclick="">关闭摄像头</button> -->
+            <!-- <button id="upload" onclick="">上传</button> -->
+        </div>
+        <!-- 右侧学习区位置 -->
+        <div class="right-region">
+            <!-- avatar -->
+            <!-- <button id="avatar" @click="user_info()">
+                <el-avatar :size="40" :src="imgSrc" :fit='cover'></el-avatar>
+                <p>{{name}}</p>
+            </button> -->
+            <!-- simple info -->
+
+                    <div class="info">
+                        <el-row style="height: 10vh;line-height: 10vh;">
+                            <el-col style="height:100%;" :span="6"><img class="headImg" :src="imgSrc" fit="contain"></el-col>
+                            <el-col style="height:100%;line-height: 10vh;" :span="5"><a href="UserCenter.html" title="前往个人中心"><span
+                                        class="username">{{ name }}</span></a></el-col>
+                        </el-row>
+                        <el-row style="height: 8vh;line-height: 8vh;">
+                            <el-col style="height:100%;" :span="12">
+                                <div class="infospan">专注时长: </div>
+                            </el-col>
+                            <el-col style="height:100%;" :span="12">
+                                <div class="infospan">{{total_record_time}}</div>
+                            </el-col>
+                        </el-row>
+                        <el-row style="height: 8vh;line-height: 8vh;">
+                            <el-col style="height:100%;" :span="12">
+                                <div class="infospan">当前排名: </div>
+                            </el-col>
+                            <el-col style="height:100%;" :span="12">
+                                <div class="infospan">{{user_rank}}</div>
+                            </el-col>
+                        </el-row>
+                    </div>
+
+            <!-- study circle -->
+            <div class="circle">
+                <div class="circle_title"><h4>学习圈</h4></div>
+                    <el-tabs v-model="activeName" type="card">
+                        <el-tab-pane label="好友排名" name="first">
+                            <div class="friend">
+                                <el-table :data="friendTable" height="45vh" style="width: 100%"
+                                    :default-sort="{prop: 'total_time', order: 'descending'}">
+                                    <el-table-column type="index" width="25" align="center">
+                                    </el-table-column>
+                                    <el-table-column prop="user.username" label="昵称" width="85" align="center">
+                                    </el-table-column>
+                                    <el-table-column prop="total_time" label="专注时长" width="100" align="center">
+                                    </el-table-column>
+                                    <el-table-column prop="rank" label="排名" width="50" align="center">
+                                    </el-table-column>
+                                </el-table>
+                            </div>
+                        </el-tab-pane>
+                        <el-tab-pane label="总排名" name="second">
+                            <div class="friend">
+                                <el-table :data="AllSortTable" height="45vh" style="width: 100%"
+                                    :default-sort="{prop: 'total_time', order: 'descending'}">
+                                    <el-table-column type="index" width="25" align="center">
+                                    </el-table-column>
+                                    <el-table-column prop="user.username" label="昵称" width="85" align="center">
+                                    </el-table-column>
+                                    <el-table-column prop="total_time" label="专注时长" width="100" align="center">
+                                    </el-table-column>
+                                    <el-table-column prop="rank" label="排名" width="50" align="center">
+                                    </el-table-column>
+                                </el-table>
+                            </div>
+                        </el-tab-pane>
+                    </el-tabs>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/index.js"></script>
+<script src="./js/jquery.countdown.js"></script>
+</html>
